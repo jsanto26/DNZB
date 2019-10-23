@@ -37,6 +37,7 @@ CREATE TABLE [dbo].[tbl.PrimaryCustBraAccountDim]
 	[pri_cust_id] [smallint], NOT NULL,
 	[pri_branch_id] [smallint], NOT NULL,
 	[cust_pri_branch_dist] [decimal(7,2)], NOT NULL,
-   
+        [acct_branch_desc] [varchar](100), NOT NULL,
+
 ) ON [PRIMARY]
 GO
