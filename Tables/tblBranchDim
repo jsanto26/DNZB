@@ -1,11 +1,11 @@
 /*****************************************************************************************************************
-NAME:    [dbo].[tbl.Branch_idDim]
-PURPOSE: Create the [dbo].[tbl.Branch_idDim]
+NAME:    [dbo].[tblBranchDim]
+PURPOSE: Create the [dbo].[tblBranchDim]
 table
 MODIFICATION LOG:
 Ver      Date        Author        Description
 -----   ----------   -----------   -------------------------------------------------------------------------------
-1.0     10/22/2019   JSantos       1. Project 3.2
+1.0     10/28/2019   Jose Santos       1. Project 3.2
 RUNTIME: 
 Approx. 0 min
 NOTES:
@@ -16,28 +16,3 @@ of the code the rights of the Free Software Definition. All derivative work can 
 distributed under the same license terms.
  
 ******************************************************************************************************************/
-USE [DFNB2]
-GO
-
-/****** Object:  Table [dbo].[tbl.Branch_idDim]
-Script Date: 10/22/2019 7:52:00:00 PM ******/
-DROP TABLE [dbo].[tbl.Branch_idDim]
-GO
-
-/****** Object:  Table [dbo].[tbl.Branch_idDim]
-Script Date: 10/22/2019  7:52:00:00 PM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[tbl.Branch_idDim]
-(
-	[branch_id] [smallint], NOT NULL,
-	[acct_branch_code] [varchar](5),NOT NULL,
-	[acct_branch_add_id] [int],NOT NULL,
-	[acct_branch_id] [smallint], NOT NULL,
-  
-) ON [PRIMARY]
-GO
