@@ -1,10 +1,10 @@
 /*****************************************************************************************************************
-NAME:    [dbo].[tbl.Customer_AddressDim]
-PURPOSE: Create the [dbo].[tbl.Customer_AddressDim] table
+NAME:    [dbo].[tblCustAddDim]
+PURPOSE: Create the [dbo].[tblCustAddDim] table
 MODIFICATION LOG:
 Ver      Date        Author        Description
 -----   ----------   -----------   -------------------------------------------------------------------------------
-1.0     10/22/2019   JSantos       1. Project 3.2
+1.0     10/28/2019   Jose Santos       1. Project 3.2
 RUNTIME: 
 Approx. 0 min
 NOTES:
@@ -18,25 +18,22 @@ distributed under the same license terms.
 USE [DFNB2]
 GO
 
-/****** Object:  Table [dbo].[tbl.Customer_AddressDim]
-Script Date: 10/22/2019 7:52:00:00 PM ******/
-DROP TABLE [dbo].[tbl.Customer_AddressDim]
-GO
-
-/****** Object:  Table [dbo].[tbl.Customer_AddressDim]    Script Date: 10/22/2019  7:52:00:00 PM ******/
+/****** Object:  Table [dbo].[tblCustAddDim]    Script Date: 10/28/2019 11:53:26 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[tbl.Customer_AddressDim]
-(
+CREATE TABLE [dbo].[tblCustAddDim](
 	[cust_add_id] [int] NOT NULL,
-	[cust_add_lat] [decimal(16,12)] NOT NULL,
-	[cust_add_lon] [decimal(16,12)] NOT NULL,
 	[cust_add_type] [varchar](1) NOT NULL,
-  [cust_id] [smallint] NOT NULL,
-
+	[cust_add_lat] [decimal](16, 12) NOT NULL,
+	[cust_add_lon] [decimal](16, 12) NOT NULL,
+	[cust_id] [smallint] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cust_add_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
