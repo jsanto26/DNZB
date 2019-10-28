@@ -1,11 +1,11 @@
 /*****************************************************************************************************************
-NAME:    [dbo].[tbl.Branch_addressDim]
-PURPOSE: Create the [dbo].[tbl.Branch_addressDim]
+NAME:    [dbo].[tblBranchAddDim]
+PURPOSE: Create the [dbo].[tblBranchAddDim]
 table
 MODIFICATION LOG:
 Ver      Date        Author        Description
 -----   ----------   -----------   -------------------------------------------------------------------------------
-1.0     10/22/2019   JSantos       1. Project 3.2
+1.0     10/28/2019   Jose Santos       1. Project 3.2
 RUNTIME: 
 Approx. 0 min
 NOTES:
@@ -19,26 +19,18 @@ distributed under the same license terms.
 USE [DFNB2]
 GO
 
-/****** Object:  Table [dbo].[tbl.Branch_addressDim]
-Script Date: 10/22/2019 7:52:00:00 PM ******/
-DROP TABLE [dbo].[tbl.Branch_addressDim]
-GO
-
-/****** Object:  Table [dbo].[tbl.Branch_addressDim]
-Script Date: 10/22/2019  7:52:00:00 PM ******/
+/****** Object:  Table [dbo].[tblBranchAddDim]    Script Date: 10/28/2019 12:00:41 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[tbl.Branch_addressDim]
-(
-	[acct_branch_add_id] [smallint], NOT NULL,
-	[acct_branch_add_type] [varchar](1),NOT NULL,
-	[acct_branch_lat] [decimal(16,12)],NOT NULL,
-	[acct_branch_lon] [decimal(16,12)],NOT NULL,
-  [acct_branch_desc] [varchar](100),NOT NULL,
-   
+CREATE TABLE [dbo].[tblBranchAddDim](
+	[acct_branch_add_id] [int] NOT NULL,
+	[acct_branch_add_type] [varchar](1) NOT NULL,
+	[acct_branch_add_lat] [decimal](16, 12) NOT NULL,
+	[acct_branch_add_lon] [decimal](16, 12) NOT NULL,
+	[branch_id] [int] NOT NULL
 ) ON [PRIMARY]
 GO
