@@ -19,7 +19,7 @@ distributed under the same license terms.
 USE [DFNB2]
 GO
 
-/****** Object:  Table [dbo].[tblBranchAddDim]    Script Date: 10/28/2019 12:00:41 PM ******/
+/****** Object:  Table [dbo].[tblBranchAddDim]    Script Date: 10/28/2019 12:06:27 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -31,6 +31,10 @@ CREATE TABLE [dbo].[tblBranchAddDim](
 	[acct_branch_add_type] [varchar](1) NOT NULL,
 	[acct_branch_add_lat] [decimal](16, 12) NOT NULL,
 	[acct_branch_add_lon] [decimal](16, 12) NOT NULL,
-	[branch_id] [int] NOT NULL
+	[branch_id] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[acct_branch_add_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
