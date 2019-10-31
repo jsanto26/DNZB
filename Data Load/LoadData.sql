@@ -192,12 +192,13 @@ INSERT INTO dbo.tblCustomerDim
 TRUNCATE TABLE dbo.tblCustomer_AccountDim;
 
 INSERT INTO dbo.tblCustomer_AccountDim
-       SELECT DISTINCT 
-              s.acct_id AS cust_acct_id, 
-              s.acct_id, 
-              s.cust_id, 
-              s.acct_cust_role_id
-       FROM dbo.stg_p1 AS s;
+SELECT DISTINCT 
+       s.acct_id AS cust_acct_id
+     , s.acct_id
+     , s.cust_id
+     , s.acct_cust_role_id
+  FROM dbo.stg_p1 AS s
+ WHERE acct_cust_role_id = 1;
 
 -- 10) Create the Branch Dimension table--
 
