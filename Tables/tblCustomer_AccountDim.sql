@@ -17,11 +17,17 @@ distributed under the same license terms.
 USE [DFNB2]
 GO
 
-/****** Object:  Table [dbo].[tblCustomer_AccountDim]    Script Date: 10/30/2019 1:27:36 PM ******/
+ALTER TABLE [dbo].[tblCustomer_AccountDim] DROP CONSTRAINT [FK_tblCustomer_AccountDim_tblCustomerRoleDim]
+GO
+
+ALTER TABLE [dbo].[tblCustomer_AccountDim] DROP CONSTRAINT [FK_tblCustomer_AccountDim_tblCustomerDim]
+GO
+
+/****** Object:  Table [dbo].[tblCustomer_AccountDim]    Script Date: 10/30/2019 10:39:52 PM ******/
 DROP TABLE [dbo].[tblCustomer_AccountDim]
 GO
 
-/****** Object:  Table [dbo].[tblCustomer_AccountDim]    Script Date: 10/30/2019 1:27:36 PM ******/
+/****** Object:  Table [dbo].[tblCustomer_AccountDim]    Script Date: 10/30/2019 10:39:52 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -32,8 +38,27 @@ CREATE TABLE [dbo].[tblCustomer_AccountDim](
 	[cust_acct_id] [int] NOT NULL,
 	[acct_id] [int] NOT NULL,
 	[cust_id] [smallint] NOT NULL,
-	[acct_cust_role_id] [smallint] NOT NULL
+	[acct_cust_role_id] [smallint] NOT NULL,
+ CONSTRAINT [PK_tblCustomer_AccountDim] PRIMARY KEY CLUSTERED 
+(
+	[cust_acct_id] ASC,
+	[acct_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[tblCustomer_AccountDim]  WITH CHECK ADD  CONSTRAINT [FK_tblCustomer_AccountDim_tblCustomerDim] FOREIGN KEY([cust_id])
+REFERENCES [dbo].[tblCustomerDim] ([cust_id])
+GO
+
+ALTER TABLE [dbo].[tblCustomer_AccountDim] CHECK CONSTRAINT [FK_tblCustomer_AccountDim_tblCustomerDim]
+GO
+
+ALTER TABLE [dbo].[tblCustomer_AccountDim]  WITH CHECK ADD  CONSTRAINT [FK_tblCustomer_AccountDim_tblCustomerRoleDim] FOREIGN KEY([acct_cust_role_id])
+REFERENCES [dbo].[tblCustomerRoleDim] ([Customer_role_id])
+GO
+
+ALTER TABLE [dbo].[tblCustomer_AccountDim] CHECK CONSTRAINT [FK_tblCustomer_AccountDim_tblCustomerRoleDim]
 GO
 
 
