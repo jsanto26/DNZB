@@ -5,7 +5,7 @@ PURPOSE: ETL process for Example data
 MODIFICATION LOG:
 Ver      Date        Author        Description
 -----   ----------   -----------   -------------------------------------------------------------------------------
-1.0     10/30/2019   Jose Santos       1. Built this table for DNZB Project
+1.0     11/01/2019   Jose Santos       1. Built this table for DNZB Project
 RUNTIME: 
 Approx. 1 min
 NOTES:
@@ -85,23 +85,35 @@ INSERT INTO dbo.tblRegionDim
 
 -- 5) Create the Address Dimension table--
 
--- SELECT DISTINCT 
---       s.acct_branch_add_id AS Address_id, 
---       s.acct_branch_add_type AS Address_Type, 
---       s.acct_branch_lat AS Latitude, 
---       s.acct_branch_lon AS Longitude
--- INTO dbo.tblAddressDim
--- FROM dbo.stg_p1 AS s;
+INSERT INTO dbo.tblAddressDim(Address_id
+                            , Address_type
+                            , Latitude
+                            , Longitude)
+SELECT cust_add_id
+     , cust_add_type
+     , cust_add_lat
+     , cust_add_lon
+  FROM dbo.stg_p1
+ GROUP BY cust_add_id
+        , cust_add_type
+        , cust_add_lat
+        , cust_add_lon
+ ORDER BY 1;
 
-TRUNCATE TABLE dbo.tblAddressDim;
-
-INSERT INTO dbo.tblAddressDim
-       SELECT DISTINCT  
-			  s.cust_add_id AS Address_id,
-			  s.cust_add_type AS Address_type,
-			  s.cust_add_lat AS Latitude,
-			  s.cust_lon AS Longitude
-       FROM dbo.stg_p1 AS s;
+INSERT INTO dbo.tblAddressDim(Address_id
+                            , Address_type
+                            , Latitude
+                            , Longitude)
+SELECT acct_branch_add_id
+     , acct_branch_add_type
+     , acct_branch_add_lat
+     , acct_branch_add_lon
+  FROM dbo.stg_p1
+ GROUP BY acct_branch_add_id
+        , acct_branch_add_type
+        , acct_branch_add_lat
+        , acct_branch_add_lon
+ ORDER BY 1;
 
 
 -- 6) Create the  Account Dimension table--
@@ -205,7 +217,7 @@ SELECT DISTINCT
 -- SELECT DISTINCT 
 --       s.branch_id, 
 --       s.acct_branch_desc AS branch_desc, 
---       s.acct_branch_add_id AS address_id, 
+--       s.cust_add_id AS Address_id, 
 --       s.acct_branch_code AS branch_code, 
 --       s.acct_region_id AS region_id, 
 --       s.acct_area_id AS area_id
@@ -213,12 +225,22 @@ SELECT DISTINCT
 -- FROM dbo.stg_p1 AS s;
 
 TRUNCATE TABLE dbo.tblBranchDim;
+INSERT INTO dbo.tblBranchDim
+SELECT DISTINCT
+    s.branch_id,
+	s.acct_branch_desc AS branch_desc,
+	--s.cust_add_id as Address_id,
+	s.acct_branch_code AS branch_code,
+	s.acct_region_id AS region_id,
+	s.acct_area_id AS area_id
+ FROM dbo.stg_p1 AS s 
+ 
 
 INSERT INTO dbo.tblBranchDim
        SELECT DISTINCT 
               s.branch_id, 
               s.acct_branch_desc AS branch_desc, 
-              s.acct_branch_add_id AS address_id, 
+              s.cust_add_id AS Address_id, 
               s.acct_branch_code AS branch_code, 
               s.acct_region_id AS region_id, 
               s.acct_area_id AS area_id
