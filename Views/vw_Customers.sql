@@ -24,7 +24,7 @@ SELECT DISTINCT
        cd.cust_id
      , ca.acct_id
      , cd.gender
-     , ad.cust_since_date AS Start_Year
+     , Year(ad.cust_since_date) AS Start_Year
      , ad.open_close_code AS Status_Account
      , DATENAME(M, cd.birth_date) AS Birth_month
      , DATEDIFF(Month, cd.cust_since_date, GETDATE()) / 12 AS Years_Client
