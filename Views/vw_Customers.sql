@@ -24,7 +24,7 @@ SELECT DISTINCT
        cd.cust_id
      , ca.acct_id
      , cd.gender
-     , YEAR(cd.cust_since_date) AS Start_Year
+     , ad.cust_since_date AS Start_Year
      , ad.open_close_code AS Status_Account
      , DATENAME(M, cd.birth_date) AS Birth_month
      , DATEDIFF(Month, cd.cust_since_date, GETDATE()) / 12 AS Years_Client
@@ -39,7 +39,8 @@ SELECT DISTINCT
        dbo.tblAccountDim AS ad ON af.acct_id = ad.acct_id
        INNER JOIN
        dbo.tblCustomerRoleDim AS cr ON ca.acct_cust_role_id = cr.Customer_role_id
- GROUP BY cd.gender
+ GROUP BY cd.gender,
+        ,ad.cust_since_date
         , cd.cust_id
         , cd.cust_since_date
         , cd.birth_date
