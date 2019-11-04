@@ -83,4 +83,18 @@ distributed under the same license terms.
       ,[Age]
       ,[Branch_id]
   FROM [DFNB2].[dbo].[vw_Customer]
+********************************************************************************************/  
+ 4)SELECT Distinct [cust_id]
+      ,[acct_id]
+      ,[first_name]
+      ,[last_name]
+      ,[gender]
+      ,[Cust_since]
+      ,[Status_Account]
+      ,[Birth_month]
+      ,[Years_Client]
+      ,[Age]
+      ,[Branch_id]
+      ,[Customer_role_id]
+  FROM [DFNB2].[dbo].[vw_Customers_Accounts]
 
