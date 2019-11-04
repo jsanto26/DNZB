@@ -8,8 +8,7 @@ Ver      Date        Author        Description
 RUNTIME: 
 Approx. 1 min
 NOTES:
-This is an example of what the result is when using SSMS to script a database
-SSMS > EXM > Tasks > Generate Scripts > Script entire database and all objects
+
 LICENSE: This code is covered by the GNU General Public License which guarantees end users
 the freedom to run, study, share, and modify the code. This license grants the recipients
 of the code the rights of the Free Software Definition. All derivative work can only be
